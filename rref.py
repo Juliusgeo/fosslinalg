@@ -20,10 +20,7 @@ def rref(m):
         for k in range(i,len(m[0])):
             for p in range(i, len(m[0])):
                 if m.item(p,j)%m.item(k,j)==0:
-                    #if m.item(p,j)<m.item(k,j):
                     m[k]=m[k]+(m.item(p,j)/m.item(k,j))*m[p]
-                    #else:
-  #                      m[k]=m[k]+(m.item(p,j)/m.item(k,j))*m[p]
         i+=1
         j+=1
     return m
