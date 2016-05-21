@@ -17,11 +17,15 @@ def rref(m):
                 if swap(m,i,i+n).item(i,j) !=0:
                     m=np.copy(swap(m,i,i+n))
         m[i]=np.copy(m[i]/m.item(i,j))
-    
-        for k in range(i,len(m[0])):
-            for p in range(i, len(m[0])):
-                if m.item(p,j)%m.item(k,j)==0:
-                    m[k]=m[k]+(m.item(p,j)/m.item(k,j))*m[p]
+        p=0
+        for k in range(i+1,len(m)):
+                while m.item(k,j)==0 and p<len(m):
+                    if m.item(p,j) != 0 and m.item(k,j) != 0:
+                        if m[k]+(m.item(p,j)/m.item(k,j))*m[p] ==0:
+                            m[k]=m[k]+(m.item(p,j)/m.item(k,j))*m[p]
+                        else:
+                            m[k]=m[k]-(m.item(p,j)/m.item(k,j))*m[p]
+                    p+=1
         i+=1
         j+=1
     return m
